@@ -29,10 +29,6 @@ function pickLocation() {
   food.mult(scl);
 }
 
-function mousePressed() {
-  s.total++;
-}
-
 function clicou() {
 	if (estado == 0 ) {
 		if (mouseX >= width/ 2 - 50 && mouseX <= width/2 + 50 && mouseY >= height/2 - 25 && mouseY <= height/ 2 + 25) {
