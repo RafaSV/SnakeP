@@ -3,7 +3,7 @@ var s;
 var scl = 20;
 var food;
 var estado = 0;
-var score = 1;
+var score = 0;
 var canvas;
 
 /* função setup, cria o fundo do jogo,
