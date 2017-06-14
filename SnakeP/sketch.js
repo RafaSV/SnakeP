@@ -12,8 +12,8 @@ var canvas;
 
 function setup() {
   	canvas = createCanvas(600, 600);
-	canvas.mouseClicked(clicou);
-  	s = new Snake();
+	canvas.mouseClicked(clicou); // chama a função com condições para o clique
+  	s = new Snake(); // define uma variável como objeto Snake
   	frameRate(10);
   	pickLocation();
 }
@@ -29,30 +29,33 @@ function pickLocation() {
   food.mult(scl);
 }
 
+
+//Função disparada pelo clique do mouse
+
 function clicou() {
 	if (estado == 0 ) {
-		if (mouseX >= width/ 2 - 50 && mouseX <= width/2 + 50 && mouseY >= height/2 - 25 && mouseY <= height/ 2 + 25) {
+		if (mouseX >= width/ 2 - 50 && mouseX <= width/2 + 50 && mouseY >= height/2 - 25 && mouseY <= height/ 2 + 25) { //área do botão "Play"
 			estado = 1;
 		}
 	}
 	
 	else if (estado == 2) {
-		if (mouseX >= width/2 - 80 && mouseX <= width/2 + 80 && mouseY >= height/2 + 35 && mouseY <= height/2 + 95) {
+		if (mouseX >= width/2 - 80 && mouseX <= width/2 + 80 && mouseY >= height/2 + 35 && mouseY <= height/2 + 95) { //área do botão "Play Again"
 			location.reload();
 		}
 	}
 }
 
-/* função que escreve na página,
+/* função que desenha na página,
 define cores e chama outras funçõees */
 
 function draw() {
 	
 	if(estado == 0) {
-		menu();
+		menu(); // chama o menu
 	
 	}
-	else if (estado == 1) {
+	else if (estado == 1) { // chama o cenário normal do jogo
 		
 		background(51);
   		if (s.eat(food)) {
@@ -66,16 +69,16 @@ function draw() {
   		rect(food.x, food.y, scl, scl);
 		textSize(30);
 		fill(255);
-		text(score, width - 30, height - 30);
+		text(score, width - 30, height - 30); // define o score no canto inferior direito
 	}
 		
 	else {
-		gameOver();
+		gameOver(); // chama a tela do fim de jogo
 	}
 	
 }
 
-/* função que lê as entradas do usuário, move a cobra através
+/* função que lê as entradas do usuário e move a cobra através
 de condições para cada tecla pressionada */
 
 function keyPressed() {
@@ -90,28 +93,28 @@ function keyPressed() {
   }
 }
 
-function menu() {
+function menu() { // deifine a cor de fundo e os elementos presentes no menu
 
 	background(51);
 	textSize(100);
 	fill(255, 255, 0);
-	text("Minhocão", 85, height / 2 - 150);
+	text("Minhocão", 85, height / 2 - 150); // título do jogo
 	fill(255, 0, 0);
-	rect(width/2 - 50, height/2 - 25, 100, 50);
+	rect(width/2 - 50, height/2 - 25, 100, 50); // botão "Play"
 	textSize(40);
 	fill(255, 255, 255);
 	text("Play", width/2 - 37.5, height/2 + 12.5);
 	
 }
 
-function gameOver() {
+function gameOver() { // define a cor de fundo e os elementos presentes na tela do fim de jogo
 	
 	background(66, 125, 244);
 	textSize(75);
 	fill(255, 255, 0);
 	text("Game Over", width/2, height / 2 - 200);
 	fill(255, 0, 0);
-	rect(width/2 - 80, height/2 + 35, 160, 60);
+	rect(width/2 - 80, height/2 + 35, 160, 60); // botão "Play Again"
 	textSize(30);
 	fill(255, 255, 255);
 	text("Play Again", width/2, height/2 + 75);
@@ -120,6 +123,6 @@ function gameOver() {
 	text("Your Score:", width/2, height/2 - 100);
 	textSize(75);
 	fill(255);
-	text(score, width/2, height/2);
+	text(score, width/2, height/2); // Mostra a variável score
 	
 }
